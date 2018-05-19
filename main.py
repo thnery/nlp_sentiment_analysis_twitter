@@ -4,7 +4,6 @@ import csv
 import pandas as pd
 import numpy as np
 import string
-import seaborn as sns
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
@@ -16,6 +15,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import preprocessing
+from sklearn.metrics import confusion_matrix
 
 def read_csv(path):
   return pd.read_csv(path, delimiter=",")
@@ -84,6 +84,7 @@ def main():
     print('\n')
     print("accuracy: %.4f precision: %.4f recall: %.4f f1-score: %.4f" % (accuracy, precision, recall, f1_score))
     print('\n')
+    print(confusion_matrix(y_test, y_pred))
 
     scores.append(score)
     accuracies.append(accuracy)
